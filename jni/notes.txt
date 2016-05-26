@@ -1,0 +1,17 @@
+Jackpal has to:
+
+mkdir app_fifos (already does it?)
+chmod 777 app_fifos (IMPORTANT)
+mkfifo app_in -m 0666
+mkfifi app_out -m 0666
+
+-- open terminal session using app_in and app_out as input and output
+
+adbuser must:
+
+ln -s /data/data/jackpal.androidterm/app_fifos/app_in /data/local/tmp/fifos/in 
+ln -s /data/data/jackpal.androidterm/app_fifos/app_out /data/local/tmp/fifos/out 
+
+/data/local/tmp/xbin/adbfd /data/local/tmp/xbin/bash -i
+
+Todo: set_window_size of bash affects the window, needs to be removed or fixed
