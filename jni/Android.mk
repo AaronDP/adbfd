@@ -6,6 +6,7 @@ LOCAL_SRC_FILES:= adbfd.c error_functions.c pty_fork.c tty_functions.c pty_maste
 LOCAL_MODULE:= adbfd
 include $(BUILD_EXECUTABLE)
 all:
+	$(info $(shell (cp ../obj/local/armeabi-v7a/adbfd /data/local/tmp/xbin)))
 	$(info $(shell (adb push ../obj/local/armeabi-v7a/adbfd /data/local/tmp/xbin)))
 
 #$(info $(shell (adb shell sh /data/local/tmp/xbin/servedown.sh)))

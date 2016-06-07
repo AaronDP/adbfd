@@ -46,8 +46,8 @@ main(int argc, char *argv[])
   // ln -s /data/data/jackpal.androidterm/app_fifos/app_out /data/local/tmp/fifos/app_out 
   //char *pathIn  = "/data/data/jackpal.androidterm/app_fifos/app_in";
   //char *pathOut  = "/data/data/jackpal.androidterm/app_fifos/app_out";
-  char *pathIn  = "/data/local/tmp/fifos/in";
-  char *pathOut  = "/data/local/tmp/fifos/out";
+  char *pathIn  = "/data/local/tmp/fifos/out";
+  char *pathOut  = "/data/local/tmp/fifos/in";
 
   // unlink(path);
   // ret = mknod(fifoName, S_IFIFO | 0666, 0);
@@ -78,10 +78,10 @@ main(int argc, char *argv[])
 
   default: /* Parent relays data between terminal and pty master */
 
-    indevFd = open(pathIn, O_RDONLY);
+    indevFd = open(pathIn, O_RDWR);
 
     if (indevFd == -1) errExit("indevFd");
-    outdevFd = open(pathOut, O_WRONLY);
+    outdevFd = open(pathOut, O_RDWR);
 
     if (outdevFd == -1) errExit("outdevFd");
 
